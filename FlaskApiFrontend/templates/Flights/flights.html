@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>List of Flights</h2><br>
+  <table class="table-fitting">
+    <tr class="table-header-formatting">
+      <td>ID</td>
+      <td>Route</td>
+      <td>Departure Time</td>
+    </tr>
+    {% for flight in flights %}
+    <tr>
+      <td>
+        <div class="media-body">
+          <a class="article-title" href="/flights/{{flight.id}}">
+            {{ flight.id }}</a>
+        </div>
+      </td>
+      <td>
+        <div class="media-body">
+          <a class="article-title" href="/flights/{{flight.id}}">
+            {{ flight.routeId.origin.id }} --> {{ flight.routeId.destination.id }}</a>
+        </div>
+      </td>
+      <td>
+        <div class="media-body">
+          <a class="article-title" href="/flights/{{flight.id}}">
+            {{ flight.dateTime }}</a>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br><form action="/flights/new" method="GET">
+    <input type = "submit" value = "Create New"/>
+  </form>
+  <br><form action="/home" method="GET">
+    <input type="submit" value="Back"/>
+  </form>
+{% endblock content %}

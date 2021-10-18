@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>List of Routes</h2><br>
+  <table class="table-fitting">
+    {% for route in routes %}
+    <tr><td>
+      <div class="media-body">
+        <a class="article-title" href="/routes/{{route.id}}">
+          [{{ route.origin.id }}] {{ route.origin.city }} -->
+          [{{ route.destination.id }}] {{ route.destination.city }}</a>
+      </div>
+    </td></tr>
+    {% endfor %}
+  </table>
+  <br><form action="/routes/new" method="GET">
+    <input type = "submit" value = "Create New"/>
+  </form>
+  <br><form action="/home" method="GET">
+    <input type="submit" value="Back"/>
+  </form>
+{% endblock content %}

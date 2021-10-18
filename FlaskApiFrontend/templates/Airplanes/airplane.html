@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Airplane Information</h2><br>
+
+  <!-- Airplane Information -->
+  <table class="table-fitting">
+    <tr>
+      <td><a class="article-title">Airplane ID#:</a></td>
+      <td><a class="article-title">{{ airplane.id }}</a></td>
+    </tr>
+    <tr>
+      <td><a class="article-title">Airplane Type:</a></td>
+      <td><a class="article-title" href="/airplane_types/{{airplane.airplaneType.id}}">
+        ID: {{airplane.airplaneType.id}} (Capacity: {{airplane.airplaneType.maxCapacity}})</a></td>
+    </tr>
+  </table><br>
+
+  <!-- Button Options -->
+  <table class="table-fitting">
+    <tr>
+      <th>
+        <form action="/airplanes" method="GET">
+          <input type="submit" value="Back"/>
+        </form>
+      </th>
+      <th>
+        <form action="/airplanes/{{airplane.id}}/edit" method="GET">
+          <input type="submit" value="Edit"/>
+        </form>
+      </th>
+      <th>
+        <form action="/airplanes/{{airplane.id}}/delete" method="POST">
+          <input type="submit" value="Delete"/>
+        </form>
+      </th>
+    </tr>
+  </table>
+{% endblock content %}

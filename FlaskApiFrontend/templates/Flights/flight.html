@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Flight Information</h2><br>
+
+  <!-- Flight Information -->
+  <table class="table-fitting">
+    <tr>
+      <td><a class="article-title">Flight ID#:</a></td>
+      <td><a class="article-title">{{ flight.id }}</a></td>
+    </tr>
+    <tr>
+      <td><a class="article-title">Route:</a></td>
+      <td><a class="article-title">
+        [{{ flight.routeId.origin.id }}] {{ flight.routeId.origin.city }} -->
+        [{{ flight.routeId.destination.id }}] {{ flight.routeId.destination.city }}</a></td>
+    </tr>
+    <tr>
+      <td><a class="article-title">Airplane:</a></td>
+      <td><a class="article-title">ID: {{ flight.airplane.id }}
+      (Capacity: {{ flight.airplane.airplaneType.maxCapacity }})</a></td>
+    </tr>
+    <tr>
+      <td><a class="article-title">Departure Time:</a></td>
+      <td><a class="article-title">{{ flight.dateTime }}</a></td>
+    </tr>
+    <tr>
+      <td><a class="article-title">Reserved Seats:</a></td>
+      <td><a class="article-title">{{ flight.reservedSeats }}</a></td>
+    </tr>
+    <tr>
+      <td><a class="article-title">Price per Seat:</a></td>
+      <td><a class="article-title">{{ flight.seatPrice }}</a></td>
+    </tr>
+  </table><br>
+
+  <!-- Button Options -->
+  <table class="table-fitting">
+    <tr>
+      <th>
+        <form action="/flights" method="GET">
+          <input type="submit" value="Back"/>
+        </form>
+      </th>
+      <th>
+        <form action="/flights/{{flight.id}}/edit" method="GET">
+          <input type="submit" value="Edit"/>
+        </form>
+      </th>
+      <th>
+        <form action="/flights/{{flight.id}}/delete" method="POST">
+          <input type="submit" value="Delete"/>
+        </form>
+      </th>
+    </tr>
+  </table>
+{% endblock content %}

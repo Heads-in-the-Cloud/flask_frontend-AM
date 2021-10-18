@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Route Information</h2><br>
+
+  <!-- Route Information -->
+  <table class="table-fitting">
+    <tr>
+      <td><a class="article-title">Route ID#:</a></td>
+      <td><a class="article-title">{{ route.id }}</a></td>
+    </tr>
+    <tr>
+      <td><a class="article-title">Route Origin:</a></td>
+      <td><a class="article-title">[{{route.origin.id}}] {{ route.origin.city }}</a></td>
+    </tr>
+    <tr>
+      <td><a class="article-title">Route Destination:</a></td>
+      <td><a class="article-title">[{{route.destination.id}}] {{ route.destination.city }}</a></td>
+    </tr>
+  </table><br>
+
+  <!-- Button Options -->
+  <table class="table-fitting">
+    <tr>
+      <th>
+        <form action="/routes" method="GET">
+          <input type="submit" value="Back"/>
+        </form>
+      </th>
+      <th>
+        <form action="/routes/{{route.id}}/edit" method="GET">
+          <input type="submit" value="Edit"/>
+        </form>
+      </th>
+      <th>
+        <form action="/routes/{{route.id}}/delete" method="POST">
+          <input type="submit" value="Delete"/>
+        </form>
+      </th>
+    </tr>
+  </table>
+{% endblock content %}

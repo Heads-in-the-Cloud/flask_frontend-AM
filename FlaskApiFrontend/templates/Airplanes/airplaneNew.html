@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Create new Airplane</h1>
+  <form action = "/airplanes/new" method = "POST">
+
+    <label for="select_type">Airplane Type: </label>
+    <select name="airplaneType" id="select_type" required>
+      {% for type in types %}
+      <option value="{{type.id}}">{{type.id}} (Capacity: {{type.maxCapacity}})</option>
+      {% endfor %}
+    </select>
+    <br><br>
+
+    <input type = "submit" value = "submit" />
+
+  </form>
+{% endblock content %}

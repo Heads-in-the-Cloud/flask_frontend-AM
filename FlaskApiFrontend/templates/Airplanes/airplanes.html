@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>List of Airplanes</h2><br>
+  <table class="table-fitting">
+    {% for airplane in airplanes %}
+    <tr><td>
+      <div class="media-body">
+        <a class="article-title" href="/airplanes/{{airplane.id}}">
+          ID: {{ airplane.id }} (Capacity: {{ airplane.airplaneType.maxCapacity }})</a>
+      </div>
+    </td></tr>
+    {% endfor %}
+  </table>
+  <br><form action="/airplanes/new" method="GET">
+    <input type = "submit" value = "Create New"/>
+  </form>
+  <br><form action="/home" method="GET">
+    <input type="submit" value="Back"/>
+  </form>
+{% endblock content %}

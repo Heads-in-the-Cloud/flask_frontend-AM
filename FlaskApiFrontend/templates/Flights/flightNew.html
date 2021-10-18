@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Create new Flight</h1>
+  <form action = "/flights/new" method = "POST">
+
+    <label for="select_route">Route: </label>
+    <select name="route" id="select_route" required>
+      {% for route in routes %}
+      <option value="{{route.id}}">[{{route.origin.id}}] {{route.origin.city}} -->
+        [{{route.destination.id}}] {{route.destination.city}}</option>
+      {% endfor %}
+    </select>
+    <br>
+
+    <label for="select_airplane">Airplane: </label>
+    <select name="airplane" id="select_airplane" required>
+      {% for airplane in airplanes %}
+      <option value="{{airplane.id}}">ID: {{airplane.id}}
+        (Capacity: {{airplane.airplaneType.maxCapacity}})</option>
+      {% endfor %}
+    </select>
+    <br>
+
+    <label for="input_departure_time">Departure Time: </label>
+    <input type = "datetime-local" name = "dateTime" id = "input_departure_time"
+           required/><br>
+
+    <label for="input_reserved_seats">Reserved Seats: </label>
+    <input type = "number" name = "reservedSeats" id = "input_reserved_seats"
+           required/><br>
+
+    <label for="input_seat_price">Seat Price: </label>
+    <input type = "number" name = "seatPrice" id = "input_seat_price"
+           required step="0.01"/><br><br>
+
+    <input type = "submit" value = "submit" />
+
+  </form>
+{% endblock content %}
