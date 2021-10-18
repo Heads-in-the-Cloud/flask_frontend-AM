@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>List of Airports</h2><br>
+  <table class="table-fitting">
+    {% for airport in airports %}
+    <tr><td>
+      <div class="media-body">
+        <a class="article-title" href="/airports/{{airport.id}}"> > {{ airport.city }}</a>
+      </div>
+    </td></tr>
+    {% endfor %}
+  </table>
+  <br><form action="/airports/new" method="GET">
+    <input type = "submit" value = "Create New"/>
+  </form>
+{% endblock content %}
